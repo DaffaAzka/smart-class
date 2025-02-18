@@ -2,7 +2,7 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="grid md:grid-cols-4 gap-8 py-8">
             <div class="md:col-span-2">
-                <h3 class="text-2xl font-bold text-gray-900 mb-4">ProSync</h3>
+                <h3 class="text-2xl font-bold text-gray-900 mb-4">SmartClass</h3>
                 <p class="text-gray-600">
                     Empowering teams to achieve more through intelligent task management and seamless collaboration.
                 </p>
@@ -11,18 +11,22 @@
             <div>
                 <h4 class="text-gray-900 font-semibold mb-4">Product</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-grey-600 transition-colors">Features</a></li>
-                    <li><a href="#" class="hover:text-grey-600 transition-colors">Pricing</a></li>
-                    <li><a href="#" class="hover:text-grey-600 transition-colors">Documentation</a></li>
+
+                    @foreach ($sub_categories as $category)
+                    <li><a href="#" class="hover:text-grey-600 transition-colors">{{ $category['name']  }}</a></li>
+                    @endforeach
+
                 </ul>
             </div>
 
             <div>
                 <h4 class="text-gray-900 font-semibold mb-4">Company</h4>
                 <ul class="space-y-2">
-                    <li><a href="#" class="hover:text-grey-600 transition-colors">About</a></li>
-                    <li><a href="#" class="hover:text-grey-600 transition-colors">Blog</a></li>
-                    <li><a href="#" class="hover:text-grey-600 transition-colors">Careers</a></li>
+
+                    @foreach ($contacts as $contact)
+                    <li><a href="#" class="hover:text-grey-600 transition-colors">{{ $contact['name'] }}</a></li>
+                    @endforeach
+
                 </ul>
             </div>
         </div>
@@ -30,7 +34,7 @@
         <div class="border-t border-gray-300 py-8">
             <div class="flex flex-col md:flex-row items-center justify-between">
                 <p class="text-gray-600 text-center md:text-left mb-4 md:mb-0">
-                    © 2024 ProSync. All rights reserved.
+                    © 2025 Smartclass. All rights reserved.
                 </p>
                 <div class="flex space-x-6">
                     <!-- Social Icons -->
