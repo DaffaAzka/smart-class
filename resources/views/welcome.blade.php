@@ -81,6 +81,14 @@
         </div>
     </div>
 
+    <div class="my-6 md:mx-16 mx-6 xl:mx-32 space-y-10">
+
+
+        <livewire:contact />
+
+
+    </div>
+
 
 
     <livewire:footer />

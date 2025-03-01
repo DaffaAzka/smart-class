@@ -18,8 +18,9 @@ class ProductContentFactory extends Factory
     {
         return [
             'product_id' => \App\Models\Product::factory(), // Relasi ke produk
-            'type' => $this->faker->randomElement(['paragraph', 'image']),
+            // 'type' => $this->faker->randomElement(['paragraph', 'image']),
             'content' => $this->faker->paragraph,
+            'img_source' => $this->faker->word,
             'order' => $this->faker->numberBetween(1, 10),
         ];
     }

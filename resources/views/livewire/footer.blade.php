@@ -1,6 +1,6 @@
 <footer class="bg-gray-100 text-gray-800 pt-12">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid md:grid-cols-4 gap-8 py-8">
+        <div class="grid md:grid-cols-4 md:gap-8 gap-4 py-8">
             <div class="md:col-span-2">
                 <h3 class="text-2xl font-bold text-gray-900 mb-4">SmartClass</h3>
                 <p class="text-gray-600">
@@ -9,17 +9,38 @@
             </div>
 
             <div>
-                <h4 class="text-gray-900 font-semibold mb-4">Product</h4>
-                <ul class="space-y-2">
+                <div class="md:block hidden">
+                    <h4 class="text-gray-900 font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2">
 
-                    @foreach ($sub_categories as $category)
-                    <li><a href="#" class="hover:text-grey-600 transition-colors">{{ $category['name']  }}</a></li>
-                    @endforeach
+                        @foreach ($sub_categories as $category)
+                        <li><a href="#" class="hover:text-grey-600 transition-colors">{{ $category['name']  }}</a></li>
+                        @endforeach
 
-                </ul>
+                    </ul>
+                </div>
+
+                <div class="md:hidden block">
+                    <div class="group">
+                        <button class="w-full flex items-center justify-between">
+                            <span class="text-gray-900 font-semibold mb-4">Product</span>
+                            <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                            </svg>
+                        </button>
+
+                        <div class="hidden group-hover:block">
+                            <div class="">
+                                @foreach ($sub_categories as $category)
+                                <p><a href="#" class="hover:text-grey-600 transition-colors underline">{{ $category['name']  }}</a></p>
+                                @endforeach
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
 
-            <div>
+            <div class="md:block hidden">
                 <h4 class="text-gray-900 font-semibold mb-4">Company</h4>
                 <ul class="space-y-2">
 
@@ -28,6 +49,26 @@
                     @endforeach
 
                 </ul>
+            </div>
+
+
+            <div class="md:hidden block">
+                <div class="group">
+                    <button class="w-full flex items-center justify-between">
+                        <span class="text-gray-900 font-semibold mb-4">Company</span>
+                        <svg class="w-2.5 h-2.5 ms-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
+                        </svg>
+                    </button>
+
+                    <div class="hidden group-hover:block">
+                        <div class="">
+                            @foreach ($contacts as $contact)
+                            <p><a href="#" class="hover:text-grey-600 transition-colors underline">{{ $contact['name']  }}</a></p>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

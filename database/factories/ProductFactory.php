@@ -21,6 +21,7 @@ class ProductFactory extends Factory
         return [
             'name' => $name,
             'slug' => Str::slug($name),
+            'header' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'image' => 'products/',
             'category_id' => \App\Models\Category::factory(), // Relasi ke kategori

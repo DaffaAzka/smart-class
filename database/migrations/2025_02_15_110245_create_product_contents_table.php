@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('product_contents', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
-            $table->enum('type', ['paragraph', 'image']);
+            // $table->enum('type', ['paragraph', 'image']);
+            $table->text('img_source')->nullable();
             $table->text('content');
             $table->integer('order')->default(0);
             $table->timestamps();
