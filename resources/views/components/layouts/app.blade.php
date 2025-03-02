@@ -12,6 +12,9 @@
     <livewire:navbar.navbar />
 
     <div class="mt-16 md:mt-10 space-y-14">
+
+
+
         {{ $slot }}
     </div>
 

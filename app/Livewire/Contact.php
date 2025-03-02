@@ -17,7 +17,7 @@ class Contact extends Component
     public $msg = '';
 
     public function save() {
-        Message::create([
+        $r = Message::create([
             'name' => $this->name,
             'email' => $this->email,
             'phone' => $this->phone,
@@ -26,6 +26,10 @@ class Contact extends Component
             'company' => $this->company,
             'msg' => $this->msg,
         ]);
+
+        if ($r) {
+            $this->reset(['name', 'email', 'phone', 'country', 'role', 'company', 'msg']);
+            session()->flash('success', 'Message sent successfully');        }
     }
 
     public function render()

@@ -7,3 +7,23 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [App\Http\Controllers\PageController::class, 'index'])->name('home');
 Route::get('/product/{slug}', Content::class)->name('product');
 Route::get('/{slug}/products', Lists::class)->name('product.lists');
+
+Route::get('/login', function () {
+    return view('admin.login');
+})->name('login');
+
+Route::middleware(['set.bearer.token', 'auth:api'])->group(function () {
+
+    // Route::get('/dashboard', function () {
+    //     return view('dashboard');
+    // })->name('dashboard');
+
+    Route::get('/dashboard', [App\Http\Controllers\PageController::class, 'dashboard'])->name('dashboard');
+    Route::get('categories', function () {
+        return view('admin.category');
+    })->name('categories');
+
+});
+
+// Authentication
+Route::post('/login', [App\Http\Controllers\AuthController::class, 'login'])->name('login.post');
