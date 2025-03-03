@@ -30,8 +30,9 @@ class PageController extends Controller
         ];
 
         $categories = Category::with('children')
-            ->where('type','=','link')
-            ->get();
+        ->whereNull('parent_id')
+        ->orderBy('order')
+        ->get();
 
         // dd($categories);
 

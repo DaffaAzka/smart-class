@@ -8,6 +8,7 @@
             <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                 <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                 <tr>
+                    <th scope="col" class="px-6 py-3">Image</th>
                     <th scope="col" class="px-6 py-3">Name</th>
                     <th scope="col" class="px-6 py-3">Description</th>
                     <th scope="col" class="px-6 py-3">Action</th>
@@ -16,12 +17,15 @@
                 <tbody>
                 @foreach($categories as $category)
                     <tr data-category-id="{{ $category->id }}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <img src="{{ asset('storage/icons/f677f584b83454a7cbc2d29a91068e.svg') }}" alt="{{ $category->slug }}" class="">
+                        </th>
                         <td class="px-6 py-4 truncate max-w-32">{{ $category->name }}</td>
                         <td class="px-6 py-4">{{ $category->description }}</td>
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
                                 {{-- <a href="{{ route('products.lists') }}?category={{ $category->id }}" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 delete-link">Products</a> --}}
-                                <button wire:click="$dispatch('editSelected', { idcategory: '{{ $category->id }}' })"" data-modal-toggle="edit-modal" data-modal-target="edit-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 edit-link" data-id="{{ $category->id }}">Edit</button>
+                                <button wire:click="$dispatch('editSelected', { idcategory: '{{ $category->id }}' })"" data-modal-toggle="main-update-modal" data-modal-target="main-update-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 update-link" data-id="{{ $category->id }}">Update</button>
                                 <a data-modal-toggle="popup-modal" href="" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 delete-link" data-id="{{ $category->id }}">Delete</a>
                             </div>
                         </td>
@@ -32,7 +36,7 @@
         </div>
 
         <div class="mb-2 mt-5 space-y-3 md:space-y-0 md:space-x-2 md:flex">
-            <button data-modal-target="create-modal" data-modal-toggle="create-modal" class="w-full md:w-fit justify-center py-2 md:py-0 text-white inline-flex items-center px-4 bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800" type="button">
+            <button data-modal-target="main-create-modal" data-modal-toggle="main-create-modal" class="w-full md:w-fit justify-center py-2 md:py-0 text-white inline-flex items-center px-4 bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800" type="button">
                 Add Main Category
             </button>
 
@@ -75,7 +79,7 @@
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
                                 {{-- <a href="{{ route('products.lists') }}?category={{ $category->id }}" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 delete-link">Products</a> --}}
-                                <button wire:click="$dispatch('editSelected', { idcategory: '{{ $category->id }}' })"" data-modal-toggle="edit-modal" data-modal-target="edit-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 edit-link" data-id="{{ $category->id }}">Edit</button>
+                                <button wire:click="$dispatch('editSelected', { idcategory: '{{ $category->id }}' })" data-modal-toggle="edit-modal" data-modal-target="edit-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 edit-link" data-id="{{ $category->id }}">Edit</button>
                                 <a data-modal-toggle="popup-modal" href="" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 delete-link" data-id="{{ $category->id }}">Delete</a>
                             </div>
                         </td>
@@ -100,6 +104,12 @@
             </div>
 
         </div>
+
+        <livewire:admin.category.main-create />
+
+        <livewire:admin.category.main-update />
+
     </div>
+
 
 </div>

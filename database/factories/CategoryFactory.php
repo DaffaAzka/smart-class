@@ -21,11 +21,11 @@ class CategoryFactory extends Factory
             'name' => $name,
             'slug' => Str::slug($name),
             'description' => $this->faker->sentence,
-            'image' => 'categories/no-image.jpg',
+            'image' => null,
             'parent_id' => null, // Default: top-level category
             'order' => $this->faker->numberBetween(1, 10),
-            'type' => $this->faker->randomElement(['category', 'link', 'contact', 'product']),
-            'url' => $this->faker->url,
+            // 'type' => $this->faker->randomElement(['category', 'link', 'contact', 'product']),
+            // 'url' => $this->faker->url,
         ];
     }
 }

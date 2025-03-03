@@ -19,8 +19,8 @@ return new class extends Migration
             $table->string('image')->nullable(); // Optional image for the category
             $table->foreignId('parent_id')->nullable()->constrained('categories')->onDelete('cascade'); // Self-referencing for subcategories
             $table->integer('order')->default(0); // Sorting order
-            $table->enum('type', ['category', 'link', 'contact', 'product'])->default('category'); // Type of category
-            $table->string('url')->nullable(); // URL for link types
+            // $table->enum('type', ['category', 'link', 'contact'])->default('category');
+            // $table->string('url')->nullable(); // URL for link types
             $table->timestamps(); // created_at and updated_at
         });
     }

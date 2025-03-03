@@ -11,7 +11,7 @@ class Footer extends Component
     public $sub_categories;
 
     public function mount () {
-        $this->contacts = Category::where('type', 'contact')->get()->toArray();
+        $this->contacts = Category::whereNull('parent_id')->get()->toArray();
         $this->sub_categories = Category::whereNull('parent_id')->get()->toArray();
     }
     public function render()

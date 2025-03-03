@@ -43,22 +43,22 @@
                     {{-- Even items: Image on right --}}
                     <div class="space-y-4 md:space-y-8 md:col-span-2">
                         <h2 class="text-base font-medium md:text-xl md:font-semibold">{{ $category['name'] }}</h2>
-                        <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ducimus necessitatibus nobis, quis odit aperiam architecto similique vero et quasi.</p>
-                        <p><a href="{{ $category['url'] }}" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">Learn More</a></p>
+                        <p class="text-sm font-thin line-clamp-3 md:line-clamp-4 text-gray-600 md:text-base md:font-normal">{{ $category['description'] }}</p>
+                        <p><a href="{{ $category['url'] }}" class="mt-3 text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:ring-green-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-green-600 dark:hover:bg-green-700 focus:outline-none dark:focus:ring-green-800">Learn More</a></p>
                     </div>
 
                     <div class="order-first md:col-span-3 md:order-last">
-                        <img src="{{ asset('storage/landing.jpg') }}" class="w-full object-cover rounded-lg md:rounded-3xl fill-blue-500">
+                        <img src="{{ asset('storage/images/' . $category['image'] ) }}" class="w-full object-cover rounded-lg md:rounded-3xl fill-blue-500">
                     </div>
                 @else
                     {{-- Odd items: Image on left (original layout) --}}
                     <div class="md:col-span-3">
-                        <img src="{{ asset('storage/landing.jpg') }}" class="w-full object-cover rounde md:rounded-3xl fill-blue-500">
+                        <img src="{{ asset('storage/images/' . $category['image'] )}}" class="w-full object-cover rounde md:rounded-3xl fill-blue-500">
                     </div>
                     <div class="space-y-4 md:space-y-8 md:col-span-2">
                         <h2 class="text-base font-medium md:text-xl md:font-semibold">{{ $category['name'] }}</h2>
-                        <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ducimus necessitatibus nobis, quis odit aperiam architecto similique vero et quasi.</p>
-                        <p><a href="{{ $category['url'] }}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Learn More</a></p>
+                        <p class="text-sm font-thin line-clamp-3 md:line-clamp-4 text-gray-600 md:text-base md:font-normal">{{ $category['description'] }}</p>
+                        <p><a href="{{ $category['url'] }}" class="mt-3 text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">Learn More</a></p>
                     </div>
                 @endif
             </div>
