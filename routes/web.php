@@ -23,6 +23,10 @@ Route::middleware(['set.bearer.token', 'auth:api'])->group(function () {
         return view('admin.category');
     })->name('categories');
 
+    Route::get('products', function () {
+        return view('admin.product');
+    })->name('products');
+
 });
 
 // Authentication
