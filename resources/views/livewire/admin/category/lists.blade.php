@@ -1,4 +1,15 @@
 <div class="space-y-4 md:space-y-8">
+    @if (session('error'))
+    <div class="flex items-center p-4 my-4 text-sm text-red-800 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400" role="alert">
+        <svg class="flex-shrink-0 inline w-4 h-4 me-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+        </svg>
+        <span class="sr-only">Info</span>
+        <div class="">
+            {{session('error')}}
+        </div>
+    </div>
+    @endif
 
     <div class="bg-white p-4 rounded-md shadow-md">
 
@@ -18,7 +29,7 @@
                 @foreach($categories as $category)
                     <tr data-category-id="{{ $category->id }}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <img src="{{ asset('storage/icons/f677f584b83454a7cbc2d29a91068e.svg') }}" alt="{{ $category->slug }}" class="">
+                            <img src="{{ asset('storage/images/' . $category->image) }}" alt="{{ $category->slug }}" class="">
                         </th>
                         <td class="px-6 py-4 truncate max-w-32">{{ $category->name }}</td>
                         <td class="px-6 py-4">{{ $category->description }}</td>
@@ -26,7 +37,7 @@
                             <div class="flex space-x-2">
                                 {{-- <a href="{{ route('products.lists') }}?category={{ $category->id }}" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 delete-link">Products</a> --}}
                                 <button wire:click="$dispatch('editSelected', { idcategory: '{{ $category->id }}' })"" data-modal-toggle="main-update-modal" data-modal-target="main-update-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 update-link" data-id="{{ $category->id }}">Update</button>
-                                <a data-modal-toggle="popup-modal" href="" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 delete-link" data-id="{{ $category->id }}">Delete</a>
+                                <button wire:click="$dispatch('deleteSelected', { idcategory: '{{ $category->id }}' })" data-modal-toggle="delete-modal" data-modal-target="delete-modal" href="" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 delete-link" data-id="{{ $category->id }}">Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -71,7 +82,7 @@
                 @foreach($subcategories as $category)
                     <tr data-category-id="{{ $category->id }}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <img src="{{ asset('storage/icons/f677f584b83454a7cbc2d29a91068e.svg') }}" alt="{{ $category->slug }}" class="">
+                            <img src="{{ asset('storage/images/' . $category->image) }}" alt="{{ $category->slug }}" class="">
                         </th>
                         <td class="px-6 py-4 truncate max-w-32">{{ $category->name }}</td>
                         <td class="px-6 py-4"><a href="" class="hover:text-blue-400 underline">{{ $category->parent_name }}</a></td>
@@ -79,8 +90,8 @@
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
                                 {{-- <a href="{{ route('products.lists') }}?category={{ $category->id }}" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 delete-link">Products</a> --}}
-                                <button wire:click="$dispatch('editSelected', { idcategory: '{{ $category->id }}' })" data-modal-toggle="edit-modal" data-modal-target="edit-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 edit-link" data-id="{{ $category->id }}">Edit</button>
-                                <a data-modal-toggle="popup-modal" href="" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 delete-link" data-id="{{ $category->id }}">Delete</a>
+                                <button wire:click="$dispatch('editSelected', { idcategory: '{{ $category->id }}' })"" data-modal-toggle="sub-update-modal" data-modal-target="sub-update-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 update-link" data-id="{{ $category->id }}">Update</button>
+                                <button wire:click="$dispatch('deleteSelected', { idcategory: '{{ $category->id }}' })" data-modal-toggle="delete-modal" data-modal-target="delete-modal" href="" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 delete-link" data-id="{{ $category->id }}">Delete</button>
                             </div>
                         </td>
                     </tr>
@@ -90,7 +101,7 @@
         </div>
 
         <div class="mb-2 mt-5 space-y-3 md:space-y-0 md:space-x-2 md:flex">
-            <button data-modal-target="create-modal" data-modal-toggle="create-modal" class="w-full md:w-fit justify-center py-2 md:py-0 text-white inline-flex items-center px-4 bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800" type="button">
+            <button data-modal-target="sub-create-modal" data-modal-toggle="sub-create-modal" class="w-full md:w-fit justify-center py-2 md:py-0 text-white inline-flex items-center px-4 bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800" type="button">
                 Add Sub Category
             </button>
 
@@ -105,9 +116,16 @@
 
         </div>
 
+        <livewire:admin.category.delete />
+
         <livewire:admin.category.main-create />
 
         <livewire:admin.category.main-update />
+
+        <livewire:admin.category.sub-create />
+
+        <livewire:admin.category.sub-update />
+
 
     </div>
 
