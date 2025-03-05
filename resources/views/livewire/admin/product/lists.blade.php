@@ -37,7 +37,7 @@
                             <div class="flex space-x-2">
                                 {{-- <a href="{{ route('products.lists') }}?product={{ $product->id }}" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 delete-link">Products</a> --}}
                                 <button wire:click="$dispatch('contentSelected', { idproduct: '{{ $product->id }}' })" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 update-link" data-id="{{ $product->id }}">Content</button>
-                                <button wire:click="$dispatch('editSelected', { idproduct: '{{ $product->id }}' })" data-modal-toggle="main-update-modal" data-modal-target="main-update-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 update-link" data-id="{{ $product->id }}">Update</button>
+                                <button wire:click="$dispatch('editSelected', { idproduct: '{{ $product->id }}' })" data-modal-toggle="create-modal" data-modal-target="main-update-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 update-link" data-id="{{ $product->id }}">Update</button>
                                 <button wire:click="$dispatch('deleteSelected', { idproduct: '{{ $product->id }}' })" data-modal-toggle="delete-modal" data-modal-target="delete-modal" href="" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 delete-link" data-id="{{ $product->id }}">Delete</button>
                             </div>
                         </td>
@@ -54,7 +54,7 @@
         </div>
 
         <div class="mb-2 mt-5 space-y-3 md:space-y-0 md:space-x-2 md:flex">
-            <button data-modal-target="main-create-modal" data-modal-toggle="main-create-modal" class="w-full md:w-fit justify-center py-2 md:py-0 text-white inline-flex items-center px-4 bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800" type="button">
+            <button data-modal-target="create-modal" data-modal-toggle="create-modal" class="w-full md:w-fit justify-center py-2 md:py-0 text-white inline-flex items-center px-4 bg-purple-700 rounded-lg hover:bg-purple-800 focus:ring-4 focus:outline-none focus:ring-purple-300 dark:bg-purple-600 dark:hover:bg-purple-700 dark:focus:ring-purple-800" type="button">
                 Add Product
             </button>
 
@@ -77,5 +77,9 @@
 
     </div>
 
+
+    <livewire:admin.product.create />
+
+    <livewire:admin.product.delete />
 
 </div>

@@ -3,6 +3,7 @@
 
 
     <livewire:admin.product.lists />
+    
 
 
 </x-layouts.admin>
