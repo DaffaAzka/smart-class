@@ -9,5 +9,10 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class ProductContent extends Model
 {
     //
+
+    protected $fillable = [
+        "product_id","img_source","header","content","order"
+    ];
+
     use HasFactory;
 }

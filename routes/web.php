@@ -27,6 +27,11 @@ Route::middleware(['set.bearer.token', 'auth:api'])->group(function () {
         return view('admin.product');
     })->name('products');
 
+    Route::get('/{slug}/contents', function ($slug) {
+        return view('admin.content', ['slug' => $slug]);
+    })->name('product.content');
+
+
 });
 
 // Authentication

@@ -29,7 +29,9 @@
                 @foreach($categories as $category)
                     <tr data-category-id="{{ $category->id }}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <img src="{{ asset('storage/images/' . $category->image) }}" alt="{{ $category->slug }}" class="">
+                            <img src="{{ asset('storage/images/' . $category->image) }}"
+                                 alt="{{ $category->slug }}"
+                                 class="max-w-24 max-h-24 object-contain">
                         </th>
                         <td class="px-6 py-4 truncate max-w-32">{{ $category->name }}</td>
                         <td class="px-6 py-4">{{ $category->description }}</td>
@@ -82,7 +84,9 @@
                 @foreach($subcategories as $category)
                     <tr data-category-id="{{ $category->id }}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <img src="{{ asset('storage/images/' . $category->image) }}" alt="{{ $category->slug }}" class="">
+                            <img src="{{ asset('storage/images/' . $category->image) }}"
+                                 alt="{{ $category->slug }}"
+                                 class="max-w-24 max-h-24 object-contain">
                         </th>
                         <td class="px-6 py-4 truncate max-w-32">{{ $category->name }}</td>
                         <td class="px-6 py-4"><a href="" class="hover:text-blue-400 underline">{{ $category->parent_name }}</a></td>

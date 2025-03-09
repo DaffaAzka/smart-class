@@ -29,14 +29,16 @@
                 @foreach($products as $product)
                     <tr data-product-id="{{ $product->id }}" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <img src="{{ asset('storage/images/' . $product->image) }}" alt="{{ $product->slug }}" class="">
+                            <img src="{{ asset('storage/images/' . $product->image) }}"
+                                 alt="{{ $product->slug }}"
+                                 class="max-w-24 max-h-24 object-contain">
                         </th>
                         <td class="px-6 py-4 truncate max-w-32">{{ $product->name }}</td>
                         <td class="px-6 py-4"><a href="" class="hover:text-blue-400 underline">{{ $product->parent_name }}</a></td>
                         <td class="px-6 py-4">
                             <div class="flex space-x-2">
                                 {{-- <a href="{{ route('products.lists') }}?product={{ $product->id }}" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 delete-link">Products</a> --}}
-                                <button wire:click="$dispatch('contentSelected', { idproduct: '{{ $product->id }}' })" class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 update-link" data-id="{{ $product->id }}">Content</button>
+                                <button class="bg-blue-100 text-blue-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 update-link"><a href="{{ route('product.content', ['slug' => $product->slug]) }}">Content</a></button>
                                 <button wire:click="$dispatch('editSelected', { idproduct: '{{ $product->id }}' })" data-modal-toggle="create-modal" data-modal-target="main-update-modal" class="bg-yellow-100 text-yellow-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300 update-link" data-id="{{ $product->id }}">Update</button>
                                 <button wire:click="$dispatch('deleteSelected', { idproduct: '{{ $product->id }}' })" data-modal-toggle="delete-modal" data-modal-target="delete-modal" href="" class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300 delete-link" data-id="{{ $product->id }}">Delete</button>
                             </div>

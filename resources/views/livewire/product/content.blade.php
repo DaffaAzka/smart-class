@@ -29,20 +29,24 @@
                 <div class="grid grid-cols-1 md:grid-cols-5 md:mx-16 xl:mx-32 gap-4 md:gap-16">
                     @if ($loop->iteration % 2 == 0)
                         {{-- Even items: Image on right --}}
-                        <div class="space-y-2 md:col-span-2 md:mt-16">
-                            <h2 class="text-lg md:text-2xl font-semibold">blablabla</h2>
-                            <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ducimus necessitatibus nobis, quis odit aperiam architecto similique vero et quasi.</p>
+                        <div class="flex flex-col justify-center h-full space-y-2 md:col-span-2">
+                            <h2 class="text-lg md:text-2xl font-semibold">{{ $content->header }}</h2>
+                            <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal">{{ $content->content }}</p>
                         </div>
 
                         <div class="order-first md:col-span-3 md:order-last">
-                            <img src="{{ asset('storage/landing.jpg') }}" class="w-full object-cover rounded-lg md:rounded-3xl fill-blue-500">
-                        </div>
+                            <div class="w-full md:aspect-[3/4] md:max-h-96 overflow-hidden">
+                                <img src="{{ asset('storage/images/content/' . $content->product_id . '/' . $content->img_source) }}"
+                                     class="w-full h-full object-cover rounded-lg md:rounded-3xl">
+                            </div>                        </div>
                     @else
                         {{-- Odd items: Image on left (original layout) --}}
                         <div class="md:col-span-3">
-                            <img src="{{ asset('storage/landing.jpg') }}" class="w-full object-cover rounded-lg md:rounded-3xl fill-blue-500">
-                        </div>
-                        <div class="space-y-2 md:col-span-2 md:mt-16">
+                            <div class="w-full md:aspect-[3/4] md:max-h-96 overflow-hidden">
+                                <img src="{{ asset('storage/images/content/' . $content->product_id . '/' . $content->img_source) }}"
+                                     class="w-full h-full object-cover rounded-lg md:rounded-3xl">
+                            </div>                        </div>
+                        <div class="flex flex-col justify-center h-full space-y-2 md:col-span-2">
                             <h2 class="text-lg md:text-2xl font-semibold">blablabla</h2>
                             <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ducimus necessitatibus nobis, quis odit aperiam architecto similique vero et quasi.</p>
                         </div>

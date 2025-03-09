@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products')->onDelete('cascade');
             // $table->enum('type', ['paragraph', 'image']);
             $table->text('img_source')->nullable();
+            $table->text('header');
             $table->text('content');
             $table->integer('order')->default(0);
             $table->timestamps();
