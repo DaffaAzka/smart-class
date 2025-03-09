@@ -1,39 +1,51 @@
 <x-layouts.app>
     <x-slot name="title">
-        Home
+        Panel Interaktif Profesional | {{ config('app.name') }}
     </x-slot>
 
-    <div class="">
-        <livewire:corousel/>
+    {{-- <x-slot name="meta_description">
+        Temukan solusi panel interaktif terbaik untuk sekolah, perkantoran, dan industri. Produsen bersertifikat dengan teknologi terkini dan dukungan profesional.
+    </x-slot> --}}
 
-        <div class="p-2 md:p-10">
+    <!-- Hero Section -->
+    <section aria-label="Highlight Produk">
+        <livewire:corousel />
+    </section>
 
-            <div class="grid grid-cols-2 md:grid-cols-4 xl:mx-32">
-
+    <!-- Highlight Features -->
+    <section class="p-2 md:p-10" aria-labelledby="highlight-products">
+        <div class="max-w-7xl mx-auto">
+            <h2 id="highlight-products" class="sr-only">Fitur Unggulan</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
                 @foreach ($highlights as $h)
-                    <div class="md:p-4 p-2">
-                        <div class="bg-white rounded shadow-md hover:shadow-lg p-4 hover:bg-blue-800 hover:text-white transition duration-300 ease-in-out h-full flex flex-col">
-                            <a href="#" class="flex-1">
-                                <div class="h-28 overflow-hidden">
+                    <article class="group relative">
+                        <div class="bg-white rounded-lg shadow-sm hover:shadow-lg p-3 md:p-4 transition-all duration-300 h-full flex flex-col border border-gray-100 hover:border-blue-100">
+                            <a href="#" class="flex flex-col flex-1">
+                                <figure class="h-28 md:h-40 overflow-hidden rounded-lg bg-gray-50">
                                     <img src="{{ asset('storage/icons/f677f584b83454a7cbc2d29a91068e.svg') }}"
-                                         alt="{{ $h['title'] }}"
-                                         class="w-full h-full object-cover rounded-lg">
-                                </div>
-                                <h2 class="text-sm font-thin md:text-base md:font-medium mt-1 md:mt-4 text-center">{{ $h['title'] }}</h2>
+                                         alt="{{ $h['title'] }} - {{ config('app.name') }}"
+                                         class="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-105">
+                                </figure>
+                                <h3 class="text-xs md:text-sm font-medium mt-2 md:mt-3 text-center text-gray-800 group-hover:text-blue-600">
+                                    {{ $h['title'] }}
+                                </h3>
                             </a>
                         </div>
-                    </div>
+                    </article>
                 @endforeach
-
             </div>
-
         </div>
-    </div>
+    </section>
 
+    <!-- Solutions Section -->
+    <section class="my-12 space-y-8" aria-labelledby="solusi-utama">
+        <div class="text-center">
+            <h1 id="solusi-utama" class="text-2xl md:text-4xl font-bold text-gray-900 mb-2">
+                Solusi Profesional untuk Berbagai Kebutuhan
+            </h1>
+            <p class="text-gray-600 md:text-lg">Sekolah, Perkantoran, OEM/ODM, dan CKD/SKD</p>
+        </div>
 
-
-    <div class="my-6 space-y-4">
-        <h1 class="text-base font-medium text-center md:text-3xl">Solusi Untuk Sekolah, Perkantoran, OEM/ODM, dan CKD/SKD</h1>
 
         @foreach ($categories as $category)
 
@@ -75,38 +87,69 @@
         </div>
         @endforeach
 
-    </div>
 
-    <div class="my-6 md:mx-16 mx-6 xl:mx-32 space-y-10">
-        <h1 class="text-lg font-medium text-center md:text-3xl">Tentang Kami</h1>
+    </section>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div class="h-full flex items-center">
-                <p class="text-sm">Kami di dukung oleh salah satu pabrikan terbesar di cina, perusahaan teknologi tinggi terkemuka di Tiongkok, memiliki pengalaman luas dalam penelitian dan pengembangan serta pembuatan tampilan interaktif. Tim R&D dan teknis kami mencakup lebih dari 60% total tenaga kerja kami, memastikan keahlian tingkat atas untuk proyek papan tulis interaktif Anda. Dengan tim produksi terampil yang mampu memproduksi lebih dari 2.000 papan tulis interaktif per bulan, kami memprioritaskan pemenuhan kebutuhan Anda dengan segera. Didukung oleh berbagai hak kekayaan intelektual, termasuk paten teknis, merek dagang produk, dan hak cipta perangkat lunak, Riotouch memegang lebih dari 30 sertifikasi seperti CE, CB, CCC, dan CQC. Andalkan kami untuk memenuhi semua kebutuhan papan tulis interaktif Anda.</p>
-            </div>
+    <!-- About Section -->
+    <section class="my-16 py-16 bg-white" aria-labelledby="tentang-kami">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="space-y-6">
+                    <h2 id="tentang-kami" class="text-2xl md:text-3xl font-bold text-gray-900">
+                        Keunggulan Kami
+                    </h2>
+                    <div class="prose max-w-none text-gray-600">
+                        <p class="mb-4">
+                            Sebagai mitra resmi pabrikan terbesar di China, kami menghadirkan teknologi terkini dalam bidang panel interaktif. Dengan tim R&amp;D yang mencakup 60% dari total karyawan, kami menjamin inovasi terus-menerus dalam setiap produk.
+                        </p>
 
-            <div class="order-first md:order-last">
-                <img src="{{ asset('storage/landing.jpg') }}" alt="" class="object-cover rounded w-screen md:w-5/6 ">
+                        <ul class="space-y-3 list-disc pl-5">
+                            <li>Kapasitas produksi 2.000+ unit/bulan</li>
+                            <li>30+ sertifikasi internasional (CE, CB, CCC)</li>
+                            <li>Dukungan teknis 24/7</li>
+                            <li>Garansi resmi 3 tahun</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <figure class="relative rounded-2xl overflow-hidden shadow-xl">
+                    <img src="{{ asset('storage/landing.jpg') }}"
+                         alt="Fasilitas Produksi Modern {{ config('app.name') }}"
+                         class="w-full h-auto object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-blue-800/20"></div>
+                </figure>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="my-6 md:mx-16 mx-6 xl:mx-32 space-y-10">
-
-
-        <livewire:contact />
-
-
-    </div>
-
-
+    <!-- Contact Section -->
+    <section class="my-16" aria-labelledby="kontak-kami">
+        <div class="max-w-7xl mx-auto px-4 md:px-8">
+            <h2 id="kontak-kami" class="sr-only">Hubungi Kami</h2>
+            <livewire:contact />
+        </div>
+    </section>
 
     <livewire:footer />
 
-
-
-
-
-
-
+    <!-- Structured Data -->
+    @push('structured-data')
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "{{ config('app.name') }}",
+        "description": "Penyedia solusi panel interaktif profesional untuk pendidikan dan bisnis",
+        "image": "{{ asset('storage/landing.jpg') }}",
+        "email": "info@example.com",
+        "telephone": "+62-123-4567-890",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Jl. Contoh No. 123",
+            "addressLocality": "Jakarta",
+            "addressCountry": "ID"
+        }
+    }
+    </script>
+    @endpush
 </x-layouts.app>
