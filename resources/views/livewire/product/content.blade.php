@@ -2,7 +2,7 @@
     <!-- Hero Section -->
     <section aria-labelledby="product-hero" class="space-y-6 md:space-y-12">
         <figure class="relative">
-            <img src="{{ asset('storage/aaaa.png') }}"
+            <img src="{{ asset('storage/images/headers/' . $product->image_header) }}"
                  class="block w-full h-auto object-cover"
                  alt="{{ $product->header }} - {{ config('app.name') }}"
                  loading="lazy"
@@ -11,7 +11,7 @@
 
         <div class="text-center max-w-4xl mx-auto px-4">
             <h1 id="product-hero" class="text-2xl md:text-4xl font-bold text-gray-900 mb-3">
-                {{ $product->header }}
+                {{ $product->name }}
             </h1>
             <p class="text-gray-600 md:text-lg leading-relaxed mb-6">
                 {{ $product->description }}

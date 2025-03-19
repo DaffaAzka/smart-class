@@ -16,6 +16,7 @@ class Create extends Component
     use WithFileUploads;
 
     public $image;
+    public $image_header;
 
     #[Validate('required')]
     public $name = '';
@@ -60,6 +61,8 @@ class Create extends Component
             ]);
 
             $image = null;
+            $header = null;
+
             $slug = Str::slug($this->name);
 
             if ($this->image) {
@@ -69,22 +72,31 @@ class Create extends Component
                 Storage::disk('public')->putFileAs('images', $this->image, $image);
             }
 
+            if($this->image_header) {
+                $fileName = $this->generateRandomString();
+                $extension = $this->image_header->extension();
+                $header = $fileName . '.' . $extension;
+                Storage::disk('public')->putFileAs('images/headers', $this->image_header, $header);
+            }
+
             $product = Product::create([
                 'name'=> $this->name,
                 'description'=> $this->description,
                 'image'=> $image,
+                'image_header'=> $header,
                 'slug'=> $slug,
                 'category_id'=> $this->category_id,
             ]);
 
             if ($product) {
-                $this->reset(['name', 'description', 'image']);
+                $this->reset(['name', 'description', 'image', 'image_header']);
                 session()->flash('success', 'Successfully create sub category');
             }
         } else {
 
             $this->validate();
             $image = null;
+            $header = null;
             $product = Product::findOrFail($this->product_id);
 
             $slug = Str::slug($this->name);
@@ -103,12 +115,27 @@ class Create extends Component
                 $image = $product->image;
             }
 
+            if($this->image_header) {
+
+                if($product->image_header != null) {
+                    Storage::disk('public')->delete('images/headers/' . $product->image_header);
+                }
+
+                $fileName = $this->generateRandomString();
+                $extension = $this->image_header->extension();
+                $header = $fileName . '.' . $extension;
+                Storage::disk('public')->putFileAs('images/headers', $this->image_header, $header);
+            }else {
+                $header = $product->image_header;
+            }
+
             $product->update([
                 'name'=> $this->name,
                 'description'=> $this->description,
                 'image'=> $image,
                 'slug'=> $slug,
                 'category_id'=> $this->category_id,
+                'image_header'=> $header,
                 // 'order' => $this->getOrderInt()
             ]);
 

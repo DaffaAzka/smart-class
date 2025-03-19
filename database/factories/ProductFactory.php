@@ -24,6 +24,7 @@ class ProductFactory extends Factory
             'header' => $this->faker->sentence,
             'description' => $this->faker->paragraph,
             'image' => 'products/',
+            'image_header' => 'products/',
             'category_id' => \App\Models\Category::factory(), // Relasi ke kategori
         ];
     }

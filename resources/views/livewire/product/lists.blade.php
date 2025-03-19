@@ -1,4 +1,4 @@
-<div class="mt-28 space-y-6">
+<div class="mt-28 space-y-6 md:space-y-0">
 
     <h1 class="text-center font-medium text-2xl md:text-3xl">Daftar Produk dari {{ $category->name }}</h1>
 
@@ -22,6 +22,10 @@
 
             @endforeach
 
+        </div>
+
+        <div class="mt- md:mt-0">
+            {{ $products->links() }}
         </div>
     </div>
 

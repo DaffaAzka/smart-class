@@ -13,7 +13,7 @@
     </section>
 
     <!-- Highlight Features -->
-    <section class="p-2 md:p-10" aria-labelledby="highlight-products">
+    {{-- <section class="p-2 md:p-10" aria-labelledby="highlight-products">
         <div class="max-w-7xl mx-auto">
             <h2 id="highlight-products" class="sr-only">Fitur Unggulan</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
@@ -35,7 +35,7 @@
                 @endforeach
             </div>
         </div>
-    </section>
+    </section> --}}
 
     <!-- Solutions Section -->
     <section class="my-12 space-y-8" aria-labelledby="solusi-utama">

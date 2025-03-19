@@ -18,10 +18,7 @@ class MediaFactory extends Factory
     {
         return [
             'name' => $this->faker->word,
-            'file_name' => $this->faker->word . '.jpg',
-            'mime_type' => 'image/jpeg',
-            'path' => 'media/',
-            'size' => $this->faker->numberBetween(1000, 100000), // Ukuran file dalam byte
+            'type' => $this->faker->word,
         ];
     }
 }

@@ -13,23 +13,25 @@ class Lists extends Component
     use WithPagination;
     #[Title("List of Products")]
     public $category;
-    protected $products;
+    // protected $products;
 
     public function mount($slug)
     {
         $this->category = Category::where('slug', $slug)->firstOrFail();
 
+        // dd($this->category);
+
         if($this->category == null) {
             abort(404);
-        } else {
-            $this->products = Product::where('category_id', $this->category->id)->paginate(4);
         }
     }
 
     public function render()
     {
+        $products = Product::where('category_id', $this->category->id)->paginate(perPage: 4);
+
         return view('livewire.product.lists', [
-            'products' => $this->products,
+            'products' => $products,
         ]);
     }
 }

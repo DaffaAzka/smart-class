@@ -52,6 +52,7 @@
                     <table class="w-full text-sm text-left text-gray-600">
                         <thead class="bg-gray-50 text-gray-700">
                             <tr>
+                                <th scope="col" class="px-6 py-3 font-medium">Image HEader</th>
                                 <th scope="col" class="px-6 py-3 font-medium">Product</th>
                                 <th scope="col" class="px-6 py-3 font-medium">Category</th>
                                 <th scope="col" class="px-6 py-3 font-medium text-right">Actions</th>
@@ -60,6 +61,17 @@
                         <tbody class="divide-y divide-gray-200">
                             @foreach($products as $product)
                             <tr class="hover:bg-gray-50" data-product-id="{{ $product->id }}">
+
+                                {{-- Image Header Cell --}}
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-4">
+                                        <img src="{{ asset('storage/images/headers/' . $product->image_header) }}"
+                                            alt="{{ $product->name }} image header"
+                                            class="w-20 object-contain rounded-lg bg-white p-1"
+                                            >
+                                    </div>
+                                </td>
+
                                 <!-- Product Cell -->
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-4">
