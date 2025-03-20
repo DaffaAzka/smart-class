@@ -13,21 +13,21 @@
     </section>
 
     <!-- Highlight Features -->
-    {{-- <section class="p-2 md:p-10" aria-labelledby="highlight-products">
+    <section class="p-2 md:p-10" aria-labelledby="highlight-products">
         <div class="max-w-7xl mx-auto">
             <h2 id="highlight-products" class="sr-only">Fitur Unggulan</h2>
             <div class="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4">
                 @foreach ($highlights as $h)
                     <article class="group relative">
                         <div class="bg-white rounded-lg shadow-sm hover:shadow-lg p-3 md:p-4 transition-all duration-300 h-full flex flex-col border border-gray-100 hover:border-blue-100">
-                            <a href="#" class="flex flex-col flex-1">
-                                <figure class="h-28 md:h-40 overflow-hidden rounded-lg bg-gray-50">
-                                    <img src="{{ asset('storage/icons/f677f584b83454a7cbc2d29a91068e.svg') }}"
+                            <a href="{{ route('product', ['slug' => $h->product->slug]) }}" class="flex flex-col flex-1">
+                                <figure class="h-28 md:h-40 overflow-hidden rounded-lg">
+                                    <img src="{{ asset('storage/images/highlights/' . $h['image']) }}"
                                          alt="{{ $h['title'] }} - {{ config('app.name') }}"
                                          class="w-full h-full object-contain p-2 transition-transform duration-300 group-hover:scale-105">
                                 </figure>
                                 <h3 class="text-xs md:text-sm font-medium mt-2 md:mt-3 text-center text-gray-800 group-hover:text-blue-600">
-                                    {{ $h['title'] }}
+                                    {{ $h['name'] }}
                                 </h3>
                             </a>
                         </div>
@@ -35,7 +35,7 @@
                 @endforeach
             </div>
         </div>
-    </section> --}}
+    </section>
 
     <!-- Solutions Section -->
     <section class="my-12 space-y-8" aria-labelledby="solusi-utama">

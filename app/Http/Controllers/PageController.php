@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Highlight;
 use Illuminate\Http\Request;
 
 class PageController extends Controller
@@ -10,24 +11,7 @@ class PageController extends Controller
 
 
     public function index() {
-        $highlights = [
-            [
-                "title"=> "Touch Board",
-                "img"=> "https://touchboard.io",
-            ],
-            [
-                "title"=> "Touch Softwares",
-                "img"=> "",
-            ],
-            [
-                "title"=> "Touch OPS",
-                "img"=> "",
-            ],
-            [
-                "title"=> "Touch Accessory",
-                "img"=> "",
-            ],
-        ];
+        $highlights = Highlight::with('product')->get();
 
         $categories = Category::with('children')
         ->whereNull('parent_id')

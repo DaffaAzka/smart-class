@@ -14,7 +14,7 @@
 
     <livewire:sidebar/>
 
-    <div class="space-y-14 p-4 sm:ml-64 bg-gray-50 mt-16 md:mt-14">
+    <div class="space-y-8 p-4 sm:ml-64 bg-gray-50 mt-16 md:mt-14">
         {{ $slot }}
     </div>
 

@@ -4,6 +4,7 @@ namespace App\Livewire\Admin\Dashboard;
 
 use App\Models\Media;
 use Illuminate\Support\Facades\Storage;
+use Livewire\Attributes\On;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
@@ -13,8 +14,24 @@ class Corousel extends Component
     use WithFileUploads;
     public $corousels;
 
+    public $corousel_id;
+
     #[Validate('image|required')]
     public $name;
+
+    #[On('deleteCorouselSelected')]
+    public function handleDeleteCorouselSelected($idcorousel) {
+        $this->corousel_id = $idcorousel;
+    }
+
+    public function destroy() {
+        $corousel = Media::findOrFail($this->corousel_id);
+        if($corousel) {
+            Storage::delete('public/images/corousels/' . $corousel->name);
+            $corousel->delete();
+            return redirect(route(name: 'dashboard'))->with('error', 'Corousel image has been deleted');
+        }
+    }
 
     public function mount()
     {
