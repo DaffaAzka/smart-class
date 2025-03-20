@@ -35,6 +35,10 @@ Route::middleware(['set.bearer.token', 'auth:api'])->group(function () {
         return view('admin.messages');
     })->name('messages');
 
+    Route::get('/users', function () {
+        return view('admin.users');
+    })->name('users');
+
 
 });
 

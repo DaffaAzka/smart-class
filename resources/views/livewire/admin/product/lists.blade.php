@@ -52,7 +52,7 @@
                     <table class="w-full text-sm text-left text-gray-600">
                         <thead class="bg-gray-50 text-gray-700">
                             <tr>
-                                <th scope="col" class="px-6 py-3 font-medium">Image HEader</th>
+                                <th scope="col" class="px-6 py-3 font-medium">Image Header</th>
                                 <th scope="col" class="px-6 py-3 font-medium">Product</th>
                                 <th scope="col" class="px-6 py-3 font-medium">Category</th>
                                 <th scope="col" class="px-6 py-3 font-medium text-right">Actions</th>
