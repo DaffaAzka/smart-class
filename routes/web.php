@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Middleware\RateLimiter;
 use App\Livewire\Product\Lists;
 use App\Livewire\Product\Content;
 use Illuminate\Support\Facades\Route;
@@ -10,7 +11,7 @@ Route::get('/{slug}/products', Lists::class)->name('product.lists');
 
 Route::get('/login', function () {
     return view('admin.login');
-})->name('login');
+})->name('login')->middleware(RateLimiter::class);
 
 Route::middleware(['set.bearer.token', 'auth:api'])->group(function () {
 

@@ -13,6 +13,7 @@
     </section>
 
     <!-- Highlight Features -->
+    @if ($highlights->isNotEmpty())
     <section class="p-2 md:p-10" aria-labelledby="highlight-products">
         <div class="max-w-7xl mx-auto">
             <h2 id="highlight-products" class="sr-only">Fitur Unggulan</h2>
@@ -36,6 +37,8 @@
             </div>
         </div>
     </section>
+    @endif
+
 
     <!-- Solutions Section -->
     <section class="my-12 space-y-8" aria-labelledby="solusi-utama">
@@ -49,7 +52,7 @@
 
         @foreach ($categories as $category)
 
-        @if ($loop->iteration % 2 == 0)
+        @if ($loop->iteration % 2 == 1)
         <div class="mx-4 md:mx-auto rounded shadow-md md:rounded-none md:shadow-none p-8 md:bg-gray-100">
         @else
         <div class="mx-4 md:mx-auto rounded shadow-md md:rounded-none md:shadow-none p-8">
@@ -113,7 +116,7 @@
                 </div>
 
                 <figure class="relative rounded-2xl overflow-hidden shadow-xl">
-                    <img src="{{ asset('storage/landing.jpg') }}"
+                    <img src="{{ asset('storage/images/service.avif') }}"
                          alt="Fasilitas Produksi Modern {{ config('app.name') }}"
                          class="w-full h-auto object-cover">
                     <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-blue-800/20"></div>

@@ -14,7 +14,7 @@ class PageController extends Controller
         $highlights = Highlight::with('product')->get();
 
         $categories = Category::with('children')
-        ->whereNull('parent_id')
+        ->where('parent_id', '=', 2)
         ->orderBy('order')
         ->get();
 

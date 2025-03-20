@@ -30,6 +30,10 @@ class Lists extends Component
     {
         $products = Product::where('category_id', $this->category->id)->paginate(perPage: 4);
 
+        if($products->count() == 1) {
+            redirect()->route('product', ['slug' => $products->first()->slug]);
+        }
+
         return view('livewire.product.lists', [
             'products' => $products,
         ]);
