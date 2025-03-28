@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class Content extends Component
 {
-    #[Title("Product Content")]
+    #[Title("Product")]
 
     public $product;
     public $product_contents;

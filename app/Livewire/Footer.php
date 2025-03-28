@@ -8,11 +8,9 @@ use Livewire\Component;
 class Footer extends Component
 {
     public $contacts;
-    public $sub_categories;
 
     public function mount () {
-        $this->contacts = Category::whereNull('parent_id')->get()->toArray();
-        $this->sub_categories = Category::whereNull('parent_id')->get()->toArray();
+        $this->contacts = Category::where('parent_id','=', '1')->get()->toArray();
     }
     public function render()
     {

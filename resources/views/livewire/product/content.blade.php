@@ -41,7 +41,7 @@
                         {{-- Even items: Image on right --}}
                         <div class="flex flex-col justify-center h-full space-y-2 md:col-span-2">
                             <h2 class="text-lg md:text-2xl font-semibold">{{ $content->header }}</h2>
-                            <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal">{{ $content->content }}</p>
+                            <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal whitespace-pre-line">{{ $content->content }}</p>
                         </div>
 
                         <div class="order-first md:col-span-3 md:order-last">
@@ -57,8 +57,8 @@
                                      class="w-full h-full object-cover rounded-lg md:rounded-3xl">
                             </div>                        </div>
                         <div class="flex flex-col justify-center h-full space-y-2 md:col-span-2">
-                            <h2 class="text-lg md:text-2xl font-semibold">blablabla</h2>
-                            <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Accusantium ducimus necessitatibus nobis, quis odit aperiam architecto similique vero et quasi.</p>
+                            <h2 class="text-lg md:text-2xl font-semibold">{{ $content->header }}</h2>
+                            <p class="text-sm font-thin text-gray-600 md:text-base md:font-normal whitespace-pre-line">{{ $content->content }}</p>
                         </div>
                     @endif
                 </div>

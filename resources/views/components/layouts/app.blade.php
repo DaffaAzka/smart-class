@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{{ asset('build/assets/app-DPkMTobE.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('build/assets/app-bk5bOXLX.css') }}"> --}}
+    <link rel="icon" href="{{ asset('icon.ico') }}">
     @vite(['resources/css/app.css','resources/js/app.js'])
     @livewireStyles
     <title>{{ $title }}</title>
@@ -23,5 +24,7 @@
 
 @livewireScripts
 <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
+<script src="{{ asset('build/assets/app-CSHKjMgd.js') }}"></script>
+
 </body>
 </html>
